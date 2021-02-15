@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" type="image/png" href="/img/favicon.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Louisiy">
+  <meta name="keywords" content="">
+  <title>Ubuntu的配置过程 - Louisiy</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                
+                Archive
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Ubuntu的配置过程">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-20 00:00" pubdate>
+        2020年3月20日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Ubuntu的配置过程</h1>
+            
+            <div class="markdown-body">
+              <h2 id="Ubuntu的配置过程"><a href="#Ubuntu的配置过程" class="headerlink" title="Ubuntu的配置过程"></a>Ubuntu的配置过程</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前几天我在Microsoft Store里发现了Ubuntu，它是运行在Windows上的子系统，第一时间我就开始了Ubuntu的配置探索之旅。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>我在Microsoft Store安装之后，发现它是装在C盘系统盘的，为了节省C盘空间，我采取了转移到非系统盘的方式</p>
+<p>通过安装，我定位到了它的安装路径</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs taggerscript">C:<span class="hljs-symbol">\U</span>sers<span class="hljs-symbol">\x</span>xxx<span class="hljs-symbol">\A</span>ppData<span class="hljs-symbol">\L</span>ocal<span class="hljs-symbol">\P</span>ackages<span class="hljs-symbol">\C</span>anonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc<br></code></pre></td></tr></table></figure>
+<p>接着，我将它卸载，通过创建软链接来解决这个问题</p>
+<p>先在想要安装的位置创建了Ubuntu文件夹</p>
+<p>然后打开<code>cmd</code>终端，输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mklink /j C:\Users\XXXX\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc  D:\Ubuntu\<br></code></pre></td></tr></table></figure>
+<p>创建成功后，再重新在Microsoft Store中安装Ubuntu</p>
+<p>安装过程中如果出现了安装失败的问题，可以运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">icacls D:\Ubuntu /grant <span class="hljs-string">&quot;用户名:(OI)(CI)(F)&quot;</span><br></code></pre></td></tr></table></figure>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h4><p>清华源</p>
+<ul>
+<li>网址：<a href="https://link.zhihu.com/?target=https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/</a></li>
+<li>源地址：<a href="https://link.zhihu.com/?target=https://mirrors.tuna.tsinghua.edu.cn/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a></li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs vim"># 默认注释了源码镜像以提高 apt <span class="hljs-keyword">update</span> 速度，如有需要可自行取消注释<br><span class="hljs-keyword">deb</span> http<span class="hljs-variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse<br># <span class="hljs-keyword">deb</span>-src http<span class="hljs-variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse<br><span class="hljs-keyword">deb</span> http<span class="hljs-variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse<br># <span class="hljs-keyword">deb</span>-src http<span class="hljs-variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse<br><span class="hljs-keyword">deb</span> http<span class="hljs-variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse<br># <span class="hljs-keyword">deb</span>-src http<span class="hljs-variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse<br><span class="hljs-keyword">deb</span> http<span class="hljs-variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse<br># <span class="hljs-keyword">deb</span>-src http<span class="hljs-variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse<br><br># 预发布软件源，不建议启用<br># <span class="hljs-keyword">deb</span> http<span class="hljs-variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-proposed main restricted universe multiverse<br># <span class="hljs-keyword">deb</span>-src http<span class="hljs-variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-proposed main restricted universe multiverse<br></code></pre></td></tr></table></figure>
+<p>阿里源</p>
+<ul>
+<li>网址：<a href="https://link.zhihu.com/?target=https://opsx.alibaba.com/guide?lang=zh-CN&document=69a2341e-801e-11e8-8b5a-00163e04cdbb">https://opsx.alibaba.com/guide?lang=zh-CN&amp;document=69a2341e-801e-11e8-8b5a-00163e04cdbb</a></li>
+<li>源地址：<a href="https://link.zhihu.com/?target=http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a></li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 默认注释了源码仓库，如有需要可自行取消注释</span><br>deb http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic main restricted universe multiverse<br><span class="hljs-comment"># deb-src https://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse</span><br>deb http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic-updates main restricted universe multiverse<br><span class="hljs-comment"># deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse</span><br>deb http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic-backports main restricted universe multiverse<br><span class="hljs-comment"># deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse</span><br>deb http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic-security main restricted universe multiverse<br><span class="hljs-comment"># deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><br><span class="hljs-comment"># 预发布软件源，不建议启用</span><br><span class="hljs-comment"># deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="hljs-comment"># deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></code></pre></td></tr></table></figure>
+<p>中科大源</p>
+<ul>
+<li>网址：<a href="https://link.zhihu.com/?target=http://mirrors.ustc.edu.cn/help/ubuntu.html">http://mirrors.ustc.edu.cn/help/ubuntu.html</a></li>
+<li>源地址：<a href="https://link.zhihu.com/?target=https://mirrors.ustc.edu.cn/ubuntu/">https://mirrors.ustc.edu.cn/ubuntu/</a></li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs vim"># 默认注释了源码仓库，如有需要可自行取消注释<br><span class="hljs-keyword">deb</span> http<span class="hljs-variable">s:</span>//mirrors.ustc.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse<br># <span class="hljs-keyword">deb</span>-src http<span class="hljs-variable">s:</span>//mirrors.ustc.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse<br><span class="hljs-keyword">deb</span> http<span class="hljs-variable">s:</span>//mirrors.ustc.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse<br># <span class="hljs-keyword">deb</span>-src http<span class="hljs-variable">s:</span>//mirrors.ustc.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse<br><span class="hljs-keyword">deb</span> http<span class="hljs-variable">s:</span>//mirrors.ustc.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse<br># <span class="hljs-keyword">deb</span>-src http<span class="hljs-variable">s:</span>//mirrors.ustc.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse<br><span class="hljs-keyword">deb</span> http<span class="hljs-variable">s:</span>//mirrors.ustc.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse<br># <span class="hljs-keyword">deb</span>-src http<span class="hljs-variable">s:</span>//mirrors.ustc.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse<br><br># 预发布软件源，不建议启用<br># <span class="hljs-keyword">deb</span> http<span class="hljs-variable">s:</span>//mirrors.ustc.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-proposed main restricted universe multiverse<br># <span class="hljs-keyword">deb</span>-src http<span class="hljs-variable">s:</span>//mirrors.ustc.edu.<span class="hljs-keyword">cn</span>/ubuntu/ bionic-proposed main restricted universe multiverse<br></code></pre></td></tr></table></figure>
+<p>网易源</p>
+<ul>
+<li>网址：<a href="https://link.zhihu.com/?target=http://mirrors.163.com/.help/ubuntu.html">http://mirrors.163.com/.help/ubuntu.html</a></li>
+<li>源地址：<a href="https://link.zhihu.com/?target=http://mirrors.163.com/">http://mirrors.163.com</a></li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 默认注释了源码仓库，如有需要可自行取消注释</span><br>deb http:<span class="hljs-regexp">//mi</span>rrors.<span class="hljs-number">163</span>.com<span class="hljs-regexp">/ubuntu/</span> bionic main restricted universe multiverse<br><span class="hljs-comment"># deb-src https://mirrors.163.com/ubuntu/ bionic main restricted universe multiverse</span><br>deb http:<span class="hljs-regexp">//mi</span>rrors.<span class="hljs-number">163</span>.com<span class="hljs-regexp">/ubuntu/</span> bionic-updates main restricted universe multiverse<br><span class="hljs-comment"># deb-src http://mirrors.163.com/ubuntu/ bionic-updates main restricted universe multiverse</span><br>deb http:<span class="hljs-regexp">//mi</span>rrors.<span class="hljs-number">163</span>.com<span class="hljs-regexp">/ubuntu/</span> bionic-backports main restricted universe multiverse<br><span class="hljs-comment"># deb-src http://mirrors.163.com/ubuntu/ bionic-backports main restricted universe multiverse</span><br>deb http:<span class="hljs-regexp">//mi</span>rrors.<span class="hljs-number">163</span>.com<span class="hljs-regexp">/ubuntu/</span> bionic-security main restricted universe multiverse<br><span class="hljs-comment"># deb-src http://mirrors.163.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><br><span class="hljs-comment"># 预发布软件源，不建议启用</span><br><span class="hljs-comment"># deb http://mirrors.163.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="hljs-comment"># deb-src http://mirrors.163.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></code></pre></td></tr></table></figure>
+<p>先对系统给的镜像源进行备份，以防止出现问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup <br></code></pre></td></tr></table></figure>
+<p>然后，修改数据源配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo vim /etc/apt/sources.list<br></code></pre></td></tr></table></figure>
+<p>选择一个源添加到文件最前面或直接将官方的源注释掉替换掉原文件</p>
+<p>更新软件源中的所有软件列表：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt-get update<br></code></pre></td></tr></table></figure>
+<p>更新软件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt-get upgrade<br></code></pre></td></tr></table></figure>
+<p>更新系统版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt-get dist-upgrade<br></code></pre></td></tr></table></figure>
+<p>下载中文语言包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt-get install language-pack-zh-han*<br></code></pre></td></tr></table></figure>
+<h4 id="安装-C-C-开发环境"><a href="#安装-C-C-开发环境" class="headerlink" title="安装 C/C++ 开发环境"></a>安装 C/C++ 开发环境</h4><p>安装编译工具包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt-get install build-essential<br></code></pre></td></tr></table></figure>
+<p>安装 nginx 依赖库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt-get install libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev<br></code></pre></td></tr></table></figure>
+<h4 id="图形界面"><a href="#图形界面" class="headerlink" title="图形界面"></a>图形界面</h4><p>首先安装使用VcXsrv Windows X Server</p>
+<p>启动Launcher，首次启动自动进入界面设置后，选择：“one large window”，Display number设置成0，其它默认即可：</p>
+<p><strong>安装桌面环境</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager<br></code></pre></td></tr></table></figure>
+<p>启动之前安装的X-Windows，在Bash中执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span>  DISPLAY=localhost:0<br>ccsm<br></code></pre></td></tr></table></figure>
+<p><strong>启动compiz (打开桌面)</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">compiz<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">This post is written by Louisiy, licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0</a>.</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/13/Raspberry_Pi/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Raspberry Pi 折腾 = =</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/02/Hello%20Wrold/">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     Copyright © 2021 Louisiy all rights reserved</br> Powered by  <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme by <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
